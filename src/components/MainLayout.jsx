@@ -1,26 +1,21 @@
-import ShopPage from "./ShopPage";
-import { useState } from "react";
-import CartPage from "./CartPage";
+import { useState, useEffect } from "react";
+import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
+import { Outlet } from "react-router";
 
 const MainLayout = () => {
-	const [cartIsOpen, setCartIsOpen] = useState(false);
+	const [products, setProducts] = useState([]);
+	const [cartItems, setCartItems] = useState([]);
 
-	function toggleCart() {
-		if (cartIsOpen) {
-			setCartIsOpen(false);
-		} else setCartIsOpen(true);
-	}
-
+	useEffect(() => {
+		fetch("https://fakestoreapi.com/products")
+			.then((res) => res.json())
+			.then((json) => setProducts(json));
+	}, []);
 	return (
 		<>
-			<h1>Project Shop</h1>
-			<ShopPage></ShopPage>
-			<button onClick={toggleCart}>Cart</button>
-			{cartIsOpen ? <CartPage /> : <></>}
-			<Link to="/">
-				<button>Home</button>
-			</Link>
+			<NavBar></NavBar>
+			<Outlet context={{ products, cartItems, setCartItems }} />
 		</>
 	);
 };
