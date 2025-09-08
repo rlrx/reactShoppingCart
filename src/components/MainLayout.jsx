@@ -17,7 +17,7 @@ const MainLayout = () => {
 
 	return (
 		<>
-			<NavBar></NavBar>
+			<NavBar cartItems={cartItems}></NavBar>
 			<Outlet context={{ products, cartItems, setCartItems }} />
 		</>
 	);

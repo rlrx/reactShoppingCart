@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const NavBar = () => {
+const NavBar = ({ cartItems }) => {
 	return (
 		<>
 			<h1>Project Shop</h1>
@@ -9,7 +9,7 @@ const NavBar = () => {
 			<Link to="/shop/cart">
 				<button>Shopping Cart</button>
 			</Link>
-			<span>item count</span>
+			<span>{cartItems.length} items in cart!</span>
 		</>
 	);
 };
