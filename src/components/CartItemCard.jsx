@@ -1,11 +1,16 @@
-const CartItemCard = () => {
+const CartItemCard = ({ imgUrl, productTitle, productPrice, quantity }) => {
 	return (
 		<>
-			<img></img>
-			<h3>Voltric iForce</h3>
-			<p>Head heavy lightweight racket</p>
-			<input type="number"></input>
-			<button>Delete</button>
+			<div>
+				<img
+					src={imgUrl}
+					style={{ width: "150px", height: "auto" }}
+				></img>
+				<h3>{productTitle}</h3>
+				<p>${productPrice}</p>
+				<input type="number"></input>
+				<button>Delete</button>
+			</div>
 		</>
 	);
 };

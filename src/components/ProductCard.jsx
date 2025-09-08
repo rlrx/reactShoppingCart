@@ -5,9 +5,6 @@ const ProductCard = ({
 	addToCart,
 	cartItems,
 }) => {
-	const printCart = () => {
-		console.log(cartItems);
-	};
 	return (
 		<>
 			<div>
@@ -18,7 +15,6 @@ const ProductCard = ({
 				<h3>{productTitle}</h3>
 				<p>${productPrice}</p>
 				<button onClick={addToCart}>Add to Cart</button>
-				<button onClick={printCart}>Print Cart State</button>
 			</div>
 		</>
 	);
