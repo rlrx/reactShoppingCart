@@ -10,8 +10,11 @@ const MainLayout = () => {
 	useEffect(() => {
 		fetch("https://fakestoreapi.com/products")
 			.then((res) => res.json())
-			.then((json) => setProducts(json));
+			.then((json) => {
+				setProducts(json);
+			});
 	}, []);
+
 	return (
 		<>
 			<NavBar></NavBar>

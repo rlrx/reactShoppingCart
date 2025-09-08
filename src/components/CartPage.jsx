@@ -5,6 +5,21 @@ import { useOutletContext } from "react-router-dom";
 const CartPage = () => {
 	const { products, cartItems, setCartItems } = useOutletContext();
 
+	const handleRemoveFromCart = (product) => {
+		setCartItems((prevCart) =>
+			prevCart.filter((item) => item.id !== product.id)
+		);
+	};
+
+	const calculateTotal = () => {
+		let totalSum = 0;
+		cartItems.map((item) => {
+			let itemSum = item.quantity * item.price;
+			totalSum += itemSum;
+		});
+		return totalSum.toFixed(2);
+	};
+
 	return (
 		<>
 			<Link to="/shop">
@@ -14,13 +29,16 @@ const CartPage = () => {
 			{cartItems.map((item) => (
 				<CartItemCard
 					key={item.id}
+					id={item.id}
 					imgUrl={item.image}
 					productTitle={item.title}
 					productPrice={item.price}
 					quantity={item.quantity}
+					removeFromCart={() => handleRemoveFromCart(item)}
+					setCartItems={setCartItems}
 				/>
 			))}
-			<button>Checkout</button>
+			<button>Checkout ${calculateTotal()}</button>
 		</>
 	);
 };

@@ -1,10 +1,4 @@
-const ProductCard = ({
-	imgUrl,
-	productTitle,
-	productPrice,
-	addToCart,
-	cartItems,
-}) => {
+const ProductCard = ({ imgUrl, productTitle, productPrice, addToCart }) => {
 	return (
 		<>
 			<div>
