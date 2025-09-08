@@ -26,18 +26,23 @@ const CartPage = () => {
 				<button>Back to Shop</button>
 			</Link>
 			<h2>Cart</h2>
-			{cartItems.map((item) => (
-				<CartItemCard
-					key={item.id}
-					id={item.id}
-					imgUrl={item.image}
-					productTitle={item.title}
-					productPrice={item.price}
-					quantity={item.quantity}
-					removeFromCart={() => handleRemoveFromCart(item)}
-					setCartItems={setCartItems}
-				/>
-			))}
+			{cartItems.length === 0 ? (
+				<p>Your cart is empty</p>
+			) : (
+				cartItems.map((item) => (
+					<CartItemCard
+						key={item.id}
+						id={item.id}
+						imgUrl={item.image}
+						productTitle={item.title}
+						productPrice={item.price}
+						quantity={item.quantity}
+						removeFromCart={() => handleRemoveFromCart(item)}
+						setCartItems={setCartItems}
+					/>
+				))
+			)}
+
 			<button>Checkout ${calculateTotal()}</button>
 		</>
 	);
